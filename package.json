@@ -1,0 +1,9 @@
+{
+	"name": "sofa",
+	"version": "1.0.0",
+	"description": "A Vue.js project",
+	"author": "lichun",
+	"devDependencies": {
+		"lerna": "^2.9.1"
+	}
+}
