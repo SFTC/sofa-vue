@@ -1,5 +1,5 @@
 <template>
-  <div>哈哈呀呀</div>
+  <div class="sofa-button">very good</div>
 </template>
 
 <script>
