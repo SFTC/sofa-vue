@@ -1,20 +1,15 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <sofa-button></sofa-button>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
-<script>
-import SofaButton from '../../packages/button/src/main';
-
-export default {
-  name: 'App',
-  components: {
-    SofaButton,
-  },
-};
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  name: 'app'
+})
 </script>
 
 <style>

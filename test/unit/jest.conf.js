@@ -6,13 +6,14 @@ module.exports = {
     'js',
     'json',
     'vue',
+    'ts',
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/packages/$1',
   },
   transform: {
+    ".*\\.(ts|vue)$": "<rootDir>/node_modules/vue-typescript-jest/preprocessor.js",
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
   },
   testPathIgnorePatterns: [
     '<rootDir>/test/e2e',
@@ -21,7 +22,7 @@ module.exports = {
   setupFiles: ['<rootDir>/test/unit/setup'],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
-    'packages/**/*.{js,vue}',
+    'packages/**/*.{js,vue,ts}',
     '!**/node_modules/**',
   ],
 };

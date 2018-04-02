@@ -1,15 +1,17 @@
 {
-    "compilerOptions": {
-        "outDir": "./built/",
-        "sourceMap": true,
-        "strict": true,
-        "noImplicitReturns": true,
-        "module": "es2015",
-        "moduleResolution": "node",
-        "target": "es5"
-    },
-    "include": [
-        "./src/**/*",
-        "./site/**/*"
-    ]
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "types": ["vue-typescript-import-dts"]
+  },
+  "include": [
+    "./site/**/*",
+    "./packages/**/*"
+  ]
 }

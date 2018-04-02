@@ -8,14 +8,16 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'sofa-button',
   methods: {
-    handleClick(event) {
+    handleClick(event: any) {
       this.$emit('click', event);
     },
   },
-};
+});
 </script>
 

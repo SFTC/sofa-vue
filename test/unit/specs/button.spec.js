@@ -1,5 +1,5 @@
 import { shallow } from '@vue/test-utils';
-import Button from '@/button/index.js';
+import Button from '@/button/src/main.vue';
 
 describe('button', () => {
   it('should render correct contents', () => {

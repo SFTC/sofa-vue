@@ -1,28 +1,15 @@
-'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+var path = require('path')
+var utils = require('./utils')
+var config = require('../config')
+var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('site'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
-
 module.exports = {
-  context: path.resolve(__dirname, '../'),
   entry: {
-    app: './site/src/main.js'
+    app: './site/src/main.ts'
   },
   output: {
     path: config.build.assetsRoot,
@@ -35,29 +22,20 @@ module.exports = {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      'site': resolve('site'),
-      'components': resolve('packages'),
+      '@': resolve('site/src'),
     }
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig,
-        include: [resolve('src'), resolve('packages'), resolve('site')],
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve('packages'), resolve('site')]
+        options: vueLoaderConfig
       },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        include: [resolve('src'), resolve('packages'), resolve('site')],
+        exclude: /node_modules/,
         options: {
           appendTsSuffixTo: [/\.vue$/],
         }
@@ -87,17 +65,5 @@ module.exports = {
         }
       }
     ]
-  },
-  node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
-    setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty'
   }
 }
