@@ -4,7 +4,7 @@
     @click="handleClick"
   >
     very good
-    <slot><slot>
+    <slot></slot>
   </div>
 </template>
 

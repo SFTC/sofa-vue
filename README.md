@@ -1,4 +1,6 @@
 # SOFA
+[![](https://travis-ci.org/SFTC/sofa.svg?branch=master)](https://travis-ci.org/SFTC/sofa)
+[![Coverage Status](https://coveralls.io/repos/github/SFTC/sofa/badge.svg?branch=master)](https://coveralls.io/github/SFTC/sofa?branch=master)
 
 Vue Components
 
