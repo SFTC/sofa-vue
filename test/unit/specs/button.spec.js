@@ -1,6 +1,7 @@
 import { shallow, mount } from '@vue/test-utils';
 import SofaButton from '@/button/index.js';
 import sinon from 'sinon'
+import Vue from 'vue'
 
 describe('button', () => {
   it('should render correct contents', () => {
@@ -24,17 +25,24 @@ describe('button', () => {
   });
 
   it('should trigger click method', () => {
-    const TestComponent = {
-      template: `<sofa-button @click="clickHandler"/>`,
-      props: ['clickHandler']
-    };
     const clickHandler = sinon.stub();
-    const wrapper = mount(TestComponent, {
-      propsData: { clickHandler },
-      stubs: {
-        SofaButton
-      }
-    });
+    
+    const TestComponent = {
+      render: function(createElement) {
+        return createElement('div', {}, [
+          createElement(SofaButton, {
+            on: {
+              click: clickHandler,
+            },
+            props: {
+              clickHandler,
+            }
+          })
+        ])
+      },
+    };
+
+    const wrapper = mount(TestComponent);
     wrapper.find(SofaButton).trigger('click');
     expect(clickHandler.calledOnce).toBe(true);
   });
