@@ -24,17 +24,24 @@ describe('button', () => {
   });
 
   it('should trigger click method', () => {
-    const TestComponent = {
-      template: `<sofa-button @click="clickHandler"/>`,
-      props: ['clickHandler']
-    };
     const clickHandler = sinon.stub();
-    const wrapper = mount(TestComponent, {
-      propsData: { clickHandler },
-      stubs: {
-        SofaButton
-      }
-    });
+    
+    const TestComponent = {
+      render: function(createElement) {
+        return createElement('div', {}, [
+          createElement(SofaButton, {
+            on: {
+              click: clickHandler,
+            },
+            props: {
+              clickHandler,
+            }
+          })
+        ])
+      },
+    };
+
+    const wrapper = mount(TestComponent);
     wrapper.find(SofaButton).trigger('click');
     expect(clickHandler.calledOnce).toBe(true);
   });
