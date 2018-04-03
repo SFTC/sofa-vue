@@ -1,0 +1,12 @@
+{
+  "name": "sofa-theme",
+  "version": "1.0.0",
+  "description": "style",
+  "author": "lichun",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^3.2.1"
+  }
+}

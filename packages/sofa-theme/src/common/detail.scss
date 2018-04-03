@@ -1,0 +1,65 @@
+@import './main';
+
+/* Color
+-------------------------- */
+$--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default;
+$--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
+$--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default;
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default;
+$--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
+$--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default;
+$--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default;
+$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
+$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
+
+/* Button
+-------------------------- */
+$--button-default-fill: $--default-fill !default;
+$--button-default-color: $--default-fill-anti !default;
+$--button-font-size: $--font-size-primary !default;
+$--button-font-weight: $--font-weight-primary !default;
+$--button-padding-vertical: 12px !default;
+$--button-padding-horizontal: 20px !default;
+$--button-border-radius: $--border-radius-base !default;
+
+$--button-active-shade-percent: 10% !default;
+$--button-hover-tint-percent: 20% !default;
+
+$--button-medium-font-size: 14px !default;
+$--button-medium-border-radius: $--border-radius-base !default;
+$--button-medium-padding-vertical: 10px !default;
+$--button-medium-padding-horizontal: 20px !default;
+
+$--button-small-font-size: 12px !default;
+$--button-small-border-radius: #{$--border-radius-base - 1} !default;
+$--button-small-padding-vertical: 9px !default;
+$--button-small-padding-horizontal: 15px !default;
+
+$--button-mini-font-size: 12px !default;
+$--button-mini-border-radius: #{$--border-radius-base - 1} !default;
+$--button-mini-padding-vertical: 7px !default;
+$--button-mini-padding-horizontal: 15px !default;
+
+$--button-disabled-fill: $--color-white !default;
+$--button-disabled-color: $--color-primary-light-6 !default;
+$--button-disabled-border: $--color-primary-light-9 !default;
+
+$--button-primary-color: $--color-white !default;
+$--button-primary-fill: $--color-primary !default;
+$--button-primary-border: $--color-primary !default;
+
+$--button-success-color: $--color-white !default;
+$--button-success-fill: $--color-success !default;
+$--button-success-border: $--color-success !default;
+
+$--button-warning-color: $--color-white !default;
+$--button-warning-fill: $--color-warning !default;
+$--button-warning-border: $--color-warning !default;
+
+$--button-danger-color: $--color-white !default;
+$--button-danger-fill: $--color-danger !default;
+$--button-danger-border: $--color-danger !default;
+
+$--button-info-color: $--color-white !default;
+$--button-info-fill: $--color-info !default;
+$--button-info-border: $--color-info !default;

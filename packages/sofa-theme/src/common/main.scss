@@ -1,3 +1,36 @@
-$namespace: 'sofa';
+$namespace: 'el';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: 'is-';
 
+/* Config
+-------------------------- */
 $--color-primary: #ff9900;
+$--color-primary-anti: #fff;
+$--color-secondary: #dcdfe6;
+$--color-white: #fff;
+$--color-black: #000;
+
+$--color-success: #ff0099;
+$--color-warning: #334455;
+$--color-danger: #009988;
+$--color-info: #442299;
+
+$--default-fill: $--color-primary;
+$--default-fill-anti: $--color-primary-anti;
+
+$--default-box-sizing: border-box;
+
+/* Font
+-------------------------- */
+$--font-size-primary: 12px !default;
+$--font-weight-primary: 500 !default;
+
+
+/* Border
+-------------------------- */
+$--border-width-base: 1px !default;
+$--border-style-base: solid !default;
+$--border-color-base: $--color-secondary !default;
+$--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
+$--border-radius-base: 4px !default;
