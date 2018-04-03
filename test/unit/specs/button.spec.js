@@ -1,7 +1,6 @@
 import { shallow, mount } from '@vue/test-utils';
 import SofaButton from '@/button/index.js';
 import sinon from 'sinon'
-import Vue from 'vue'
 
 describe('button', () => {
   it('should render correct contents', () => {
