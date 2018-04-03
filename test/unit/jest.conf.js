@@ -6,13 +6,13 @@ module.exports = {
     'js',
     'json',
     'vue',
-    'ts',
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/packages/$1',
   },
   transform: {
-    ".*\\.(ts|vue)$": "<rootDir>/node_modules/vue-typescript-jest/preprocessor.js",
+    // ".*\\.(ts|vue)$": "<rootDir>/node_modules/vue-typescript-jest/preprocessor.js",
+    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
   },
   testPathIgnorePatterns: [
