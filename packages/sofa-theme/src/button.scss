@@ -1,0 +1,7 @@
+@charset "UTF-8";
+@import "common/main";
+
+@include b(button) {
+  display: inline-block;
+  white-space: nowrap;
+}
