@@ -1,12 +1,18 @@
 <template>
   <div>
-    <!-- <comp-show-container>
-      <sofa-button type="primary" size="small">测试一下</sofa-button>
+    <comp-show-container>
+      <sofa-button size="small">测试一下</sofa-button>
     </comp-show-container>
 
     <comp-show-container>
-      <sofa-button type="danger" size="small">测试一下</sofa-button>
-    </comp-show-container> -->
+      <div class="buttons">
+        <sofa-button type="danger" size="small" disabled>测试一下</sofa-button>
+        <sofa-button type="danger" size="small" loading>测试一下</sofa-button>
+        <sofa-button type="danger" size="small" plain>测试一下</sofa-button>
+        <sofa-button type="danger" size="small" round>测试一下</sofa-button>
+        <sofa-button type="danger" size="small" circle>测</sofa-button>
+      </div>
+    </comp-show-container>
 
     <comp-show-container>
       <div class="buttons">

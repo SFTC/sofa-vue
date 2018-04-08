@@ -1,0 +1,68 @@
+
+@import "common/main";
+
+@font-face {
+  font-family: "sofa-icons";
+  src: url('#{$--font-path}/sofa-icons.woff') format('woff'), /* chrome, firefox */
+       url('#{$--font-path}/sofa-icons.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+[class^="sofa-icon-"], [class*=" sofa-icon-"] {
+  font-family:"sofa-icons" !important;
+  font-style:normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sofa-icon-loading:before { content: "\e600"; }
+.sofa-icon-loading {
+  animation: rotating 2s linear infinite;
+  
+}
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sofa-icon-all:before { content: "\e696"; }
+
+.sofa-icon-back:before { content: "\e697"; }
+
+.sofa-icon-cart:before { content: "\e698"; }
+
+.sofa-icon-category:before { content: "\e699"; }
+
+.sofa-icon-close:before { content: "\e69a"; }
+
+.sofa-icon-comments:before { content: "\e69b"; }
+
+.sofa-icon-delete:before { content: "\e69d"; }
+
+.sofa-icon-edit:before { content: "\e69e"; }
+
+.sofa-icon-less:before { content: "\e6a5"; }
+
+.sofa-icon-moreunfold:before { content: "\e6a6"; }
+
+.sofa-icon-more:before { content: "\e6a7"; }
+
+.sofa-icon-refresh:before { content: "\e6aa"; }
+
+.sofa-icon-search:before { content: "\e6ac"; }
+
+.sofa-icon-selected:before { content: "\e6ad"; }
+
+.sofa-icon-set:before { content: "\e6ae"; }
+
+.sofa-icon-add:before { content: "\e6b9"; }

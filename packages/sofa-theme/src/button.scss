@@ -4,6 +4,8 @@
 @import "common/name";
 @import "common/mixin";
 
+/* Button support mixin
+ -------------------------- */
 @mixin button-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
   padding: $padding-vertical $padding-horizontal;
   font-size: $font-size;
@@ -13,41 +15,11 @@
   }
 }
 
-@mixin button-active() {
-  color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
-  border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
-  outline: none;
-}
-
-@mixin button-plain($color) {
+@mixin button-active($color, $background-color, $border-color) {
   color: $color;
-  background: mix($--color-white, $color, 90%);
-  border-color: mix($--color-white, $color, 60%);
-
-  &:hover,
-  &:focus {
-    background: $color;
-    border-color: $color;
-    color: $--color-white;
-  }
-
-  &:active {
-    background: mix($--color-black, $color, $--button-active-shade-percent);
-    border-color: mix($--color-black, $color, $--button-active-shade-percent);
-    color: $--color-white;
-    outline: none;
-  }
-
-  &.is-disabled {
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      color: mix($--color-white, $color, 40%);
-      background-color: mix($--color-white, $color, 90%);
-      border-color: mix($--color-white, $color, 80%);
-    }
-  }
+  background: mix($--color-black, $background-color, $--button-active-shade-percent);
+  border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
+  outline: none;
 }
 
 @mixin button-variant($color, $background-color, $border-color) {
@@ -63,16 +35,11 @@
   }
   
   &:active {
-    background: mix($--color-black, $background-color, $--button-active-shade-percent);
-    border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
-    color: $color;
-    outline: none;
+    @include button-active($color, $background-color, $border-color);
   }
 
   &.is-active {
-    background: mix($--color-black, $background-color, $--button-active-shade-percent);
-    border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
-    color: $color;
+    @include button-active($color, $background-color, $border-color);
   }
 
   &.is-disabled {
@@ -87,10 +54,36 @@
   }
 
   &.is-plain {
-    @include button-plain($background-color);
+    color: $background-color;
+    background: mix($--color-white, $background-color, 90%);
+    border-color: mix($--color-white, $background-color, 60%);
+  
+    &:hover,
+    &:focus {
+      background: $background-color;
+      border-color: $background-color;
+      color: $--color-white;
+    }
+  
+    &:active {
+      @include button-active($--color-white, $background-color, $background-color);
+    }
+  
+    &.is-disabled {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: mix($--color-white, $background-color, 40%);
+        background-color: mix($--color-white, $background-color, 90%);
+        border-color: mix($--color-white, $background-color, 80%);
+      }
+    }
   }
 }
 
+/* Button style
+ -------------------------- */
 @include b(button) {
   display: inline-block;
   line-height: 1;
@@ -116,13 +109,15 @@
   }
 
   &:active {
-    @include button-active();
+    @include button-active($--color-primary, $--color-white, $--color-primary);
   }
 
   &::-moz-focus-inner {
     border: 0;
   }
 
+  /* Button state (is-plain is-disabled....)
+  -------------------------- */
   @include when(plain) {
     &:hover,
     &:focus {
@@ -132,13 +127,9 @@
     }
 
     &:active {
-      background: $--color-white;
-      @include button-active();
+      @include button-active($--color-primary, $--color-white, $--color-primary);
+      background: $--color-primary-light-9;
     }
-  }
-  
-  @include when(active) {
-    @include button-active();
   }
 
   @include when(disabled) {
@@ -193,6 +184,8 @@
     padding: 12px;
   }
 
+  /* Button type & size
+  -------------------------- */
   @include m(primary) {
     @include button-variant($--button-primary-color, $--button-primary-fill, $--button-primary-border);
   }

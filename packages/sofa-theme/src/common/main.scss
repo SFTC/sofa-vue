@@ -6,23 +6,23 @@ $state-prefix: 'is-';
 /* Config
 -------------------------- */
 $--color-primary: #ff9900;
-$--color-primary-anti: #fff;
 $--color-secondary: #dcdfe6;
+
 $--color-white: #fff;
-$--color-black: #000;
+$--color-black: #333;
 
 $--color-success: #ff0099;
 $--color-warning: #334455;
 $--color-danger: #009988;
 $--color-info: #442299;
 
-$--default-fill: $--color-primary;
-$--default-fill-anti: $--color-primary-anti;
-
+$--default-fill: $--color-white;
+$--default-text-color: $--color-black;
 $--default-box-sizing: border-box;
 
 /* Font
 -------------------------- */
+$--font-path: 'fonts' !default;
 $--font-size-primary: 12px !default;
 $--font-weight-primary: 500 !default;
 

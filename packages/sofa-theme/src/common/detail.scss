@@ -15,7 +15,7 @@ $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
 /* Button
 -------------------------- */
 $--button-default-fill: $--default-fill !default;
-$--button-default-color: $--default-fill-anti !default;
+$--button-default-color: $--default-text-color !default;
 $--button-font-size: $--font-size-primary !default;
 $--button-font-weight: $--font-weight-primary !default;
 $--button-padding-vertical: 12px !default;

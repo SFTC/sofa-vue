@@ -28,6 +28,7 @@ export default {
     },
   },
   methods: {
+    // 树形非森林
     translateVNode(node, nodeStr = '') {
       let tempNodeStr = nodeStr;
       if (node) {
@@ -43,7 +44,7 @@ export default {
           Object.keys(props).forEach((key) => {
             propsStr = `${propsStr} ${key}="${props[key]}"`;
           });
-          subStr = `<${tag}${propsStr}>${subHolder}</${tag}>`;
+          subStr = `<${tag}${propsStr}>\n${subHolder}\n</${tag}>`;
         }
 
         if (tempNodeStr.indexOf(subHolder) > -1) {
@@ -55,7 +56,7 @@ export default {
         const children = options ? options.children : node.children;
         if (children) {
           const childrenNodeStrArray = children.map(child => this.translateVNode(child));
-          tempNodeStr = tempNodeStr.replace(subHolder, childrenNodeStrArray.join(''));
+          tempNodeStr = tempNodeStr.replace(subHolder, childrenNodeStrArray.join('\n'));
         }
       }
       return tempNodeStr;
