@@ -36,7 +36,6 @@ export default {
   methods: {
     // 树形非森林
     translateVNode(node, nodeStr = '') {
-      console.log(node);
       let tempNodeStr = nodeStr;
       if (node) {
         let subStr = '';
