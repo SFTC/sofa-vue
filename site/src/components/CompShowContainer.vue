@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <slot></slot>
-    <div>
-      {{ inputProps }}
+  <div class="comp-container">
+    <div class="comp__comp">
+      <slot></slot>
+    </div>
+    <div class="comp__code" ref="comp-code">
+      <pre><code class="html">
+        {{ inputProps }}
+      </code></pre>
     </div>
   </div>
 </template>
 
 <script>
+const subHolder = '==';
+
 export default {
   name: 'CompShowContainer',
   computed: {
@@ -18,21 +24,55 @@ export default {
       return null;
     },
     inputProps() {
-      console.log(this.compNode);
-      if (this.compNode && this.compNode.componentOptions) {
-        return this.compNode.componentOptions.propsData;
-      }
-      return null;
+      return this.translateVNode(this.compNode);
     },
   },
   methods: {
-    translateVNode(node) {
+    translateVNode(node, nodeStr = '') {
+      let tempNodeStr = nodeStr;
+      if (node) {
+        let subStr = '';
+        const options = node.componentOptions;
 
+        if (node.text) {
+          subStr = node.text;
+        } else {
+          const tag = options ? options.tag : node.tag;
+          const props = options ? options.propsData : {};
+          let propsStr = '';
+          Object.keys(props).forEach((key) => {
+            propsStr = `${propsStr} ${key}="${props[key]}"`;
+          });
+          subStr = `<${tag}${propsStr}>${subHolder}</${tag}>`;
+        }
+
+        if (tempNodeStr.indexOf(subHolder) > -1) {
+          tempNodeStr = tempNodeStr.replace(subHolder, subStr);
+        } else {
+          tempNodeStr += subStr;
+        }
+
+        const children = options ? options.children : node.children;
+        if (children) {
+          const childrenNodeStrArray = children.map(child => this.translateVNode(child));
+          tempNodeStr = tempNodeStr.replace(subHolder, childrenNodeStrArray.join(''));
+        }
+      }
+      return tempNodeStr;
     },
   },
 };
 </script>
 
 <style lang="scss">
-
+.comp-container {
+  display: flex;
+  text-align: left;
+  padding: 10px;
+  .comp__comp {
+    width: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
 </style>
