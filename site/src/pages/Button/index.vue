@@ -1,7 +1,7 @@
 <template>
   <div>
     <comp-show-container>
-      <sofa-button>测试一下</sofa-button>
+      <sofa-button type="primary" size="small">测试一下</sofa-button>
     </comp-show-container>
   </div>
 </template>
