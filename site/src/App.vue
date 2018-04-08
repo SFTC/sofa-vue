@@ -4,12 +4,8 @@
     <div id="content">
       <nav>
         <ul>
+          <li><router-link to="/icon">Icon</router-link></li>
           <li><router-link to="/button">Button</router-link></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
       </nav>
       <div id="main">

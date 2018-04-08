@@ -16,6 +16,12 @@ const subHolder = '==';
 
 export default {
   name: 'CompShowContainer',
+  props: {
+    showClass: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
     compNode() {
       if (this.$slots && this.$slots.default) {
@@ -24,12 +30,13 @@ export default {
       return null;
     },
     inputProps() {
-      return this.translateVNode(this.compNode);
+      return this.translateVNode(this.compNode).replace(subHolder, '');
     },
   },
   methods: {
     // 树形非森林
     translateVNode(node, nodeStr = '') {
+      console.log(node);
       let tempNodeStr = nodeStr;
       if (node) {
         let subStr = '';
@@ -40,6 +47,9 @@ export default {
         } else {
           const tag = options ? options.tag : node.tag;
           const props = options ? options.propsData : {};
+          if (this.showClass && node.data && node.data.staticClass) {
+            props.class = node.data.staticClass;
+          }
           let propsStr = '';
           Object.keys(props).forEach((key) => {
             propsStr = `${propsStr} ${key}="${props[key]}"`;
