@@ -1,7 +1,7 @@
 <template>
   <div>
     <comp-show-container>
-      <sofa-input 
+      <sofa-input
         v-model="value"
         placeholder="请输入内容"
         @input="handlerInput"
@@ -30,17 +30,21 @@ export default {
   },
   methods: {
     handlerInput() {
-      console.log('input')
+      // eslint-disable-next-line
+      console.log('input');
     },
     handleBlur() {
-      console.log('blur')
+      // eslint-disable-next-line
+      console.log('blur');
     },
     handlerFocus() {
-      console.log('focus')
+      // eslint-disable-next-line
+      console.log('focus');
     },
     handleChange() {
-      console.log('change')
-    }
-  }
+      // eslint-disable-next-line
+      console.log('change');
+    },
+  },
 };
 </script>
