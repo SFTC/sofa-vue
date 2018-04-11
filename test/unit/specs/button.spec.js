@@ -23,19 +23,19 @@ describe('button', () => {
     expect(wrapper.emitted().click).toBeTruthy();
   });
 
-  // it('should trigger click method', () => {
-  //   const TestComponent = {
-  //     template: `<sofa-button @click="clickHandler"/>`,
-  //     props: ['clickHandler']
-  //   };
-  //   const clickHandler = sinon.stub();
-  //   const wrapper = mount(TestComponent, {
-  //     propsData: { clickHandler },
-  //     stubs: {
-  //       SofaButton
-  //     }
-  //   });
-  //   wrapper.find(SofaButton).trigger('click');
-  //   expect(clickHandler.calledOnce).toBe(true);
-  // });
+  it('should trigger click method', () => {
+    const TestComponent = {
+      template: `<sofa-button @click="clickHandler"/>`,
+      props: ['clickHandler']
+    };
+    const clickHandler = sinon.stub();
+    const wrapper = mount(TestComponent, {
+      propsData: { clickHandler },
+      stubs: {
+        SofaButton
+      }
+    });
+    wrapper.find(SofaButton).trigger('click');
+    expect(clickHandler.calledOnce).toBe(true);
+  });
 });
