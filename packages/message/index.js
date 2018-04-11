@@ -1,4 +1,4 @@
-import SofaMessage from './src/main';
+import SofaMessage from './src/main.js';
 
 /* istanbul ignore next */
 SofaMessage.install = (Vue) => {

@@ -1,8 +1,7 @@
 <template>
   <div>
     <comp-show-container>
-      <sofa-button size="small">打开消息提示</sofa-button>
-      <sofa-message></sofa-message>
+      <sofa-button size="small" @click="handleOpenMessgae">打开消息提示</sofa-button>
     </comp-show-container>
   </div>
 </template>
@@ -19,8 +18,13 @@ export default {
     SofaMessage,
     CompShowContainer,
   },
+  methods: {
+    handleOpenMessgae() {
+      this.$message({
+        message: '恭喜你，这是一条成功消息',
+        type: 'success',
+      });
+    },
+  },
 };
 </script>
-
-<style lang="scss">
-</style>
