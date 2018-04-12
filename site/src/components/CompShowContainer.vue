@@ -45,7 +45,7 @@ export default {
           subStr = node.text;
         } else {
           const tag = options ? options.tag : node.tag;
-          const props = options ? options.propsData : {};
+          const props = (options && options.propsData) ? options.propsData : {};
           if (this.showClass && node.data && node.data.staticClass) {
             props.class = node.data.staticClass;
           }
