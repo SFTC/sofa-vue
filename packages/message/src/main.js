@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import Main from './main.vue';
 
-
 const MessageConstructor = Vue.extend(Main);
 const instances = [];
 let instance;
-let seed = 1;
+let idIndex = 1;
 let nowzIndex = 2000;
 
 const Message = (options) => {
@@ -17,8 +16,8 @@ const Message = (options) => {
     };
   }
   const userOnClose = options.onClose;
-  const id = seed;
-  seed += 1;
+  const id = idIndex;
+  idIndex += 1;
   this.options.onClose = () => {
     Message.close(id, userOnClose);
   };
