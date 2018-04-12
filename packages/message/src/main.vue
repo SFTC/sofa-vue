@@ -40,7 +40,7 @@ export default {
       iconClass: '',
       customClass: '',
       onClose: null,
-      showClose: false,
+      showClose: true,
       closed: false,
       timer: null,
       center: false
@@ -67,6 +67,7 @@ export default {
     closed(newVal) {
       if (newVal) {
         this.visible = false;
+        this.destroyElement();
         this.$el.addEventListener('transitionend', this.destroyElement);
       }
     }
