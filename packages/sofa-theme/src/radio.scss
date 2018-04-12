@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import "common/main";
+@import "common/detail";
+@import "common/name";
+@import "common/mixin";
+
+/* Radio support mixin
+ -------------------------- */
+@mixin radio-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+  &.is-round {
+    padding: $padding-vertical $padding-horizontal;
+  }
+}
