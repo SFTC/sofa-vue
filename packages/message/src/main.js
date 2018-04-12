@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Main from './main.vue';
 
 const MessageConstructor = Vue.extend(Main);
-const instances = [];
-let instance;
+const messageInstances = [];
+let messageInstance;
 let idIndex = 1;
 let nowzIndex = 2000;
 
@@ -21,17 +21,17 @@ const Message = (options) => {
   this.options.onClose = () => {
     Message.close(id, userOnClose);
   };
-  instance = new MessageConstructor({
+  messageInstance = new MessageConstructor({
     data: options,
   });
-  instance.id = id;
-  instance.vm = instance.$mount();
-  document.body.appendChild(instance.vm.$el);
-  instance.vm.visible = true;
-  instance.dom = instance.vm.$el;
-  instance.dom.style.zIndex = nowzIndex;
+  messageInstance.id = id;
+  messageInstance.vm = messageInstance.$mount();
+  document.body.appendChild(messageInstance.vm.$el);
+  messageInstance.vm.visible = true;
+  messageInstance.dom = messageInstance.vm.$el;
+  messageInstance.dom.style.zIndex = nowzIndex;
   nowzIndex += 1;
-  instances.push(instance);
+  messageInstances.push(messageInstance);
 };
 
 ['success', 'warning', 'info', 'error'].forEach((type) => {
@@ -47,20 +47,20 @@ const Message = (options) => {
 });
 
 Message.close = (id, userOnClose) => {
-  for (let i = 0, len = instances.length; i < len; i += 1) {
-    if (id === instances[i].id) {
+  for (let i = 0, len = messageInstances.length; i < len; i += 1) {
+    if (id === messageInstances[i].id) {
       if (typeof userOnClose === 'function') {
-        userOnClose(instances[i]);
+        userOnClose(messageInstances[i]);
       }
-      instances.splice(i, 1);
+      messageInstances.splice(i, 1);
       break;
     }
   }
 };
 
 Message.closeAll = () => {
-  for (let i = instances.length - 1; i >= 0; i -= 1) {
-    instances[i].close();
+  for (let i = messageInstances.length - 1; i >= 0; i -= 1) {
+    messageInstances[i].close();
   }
 };
 

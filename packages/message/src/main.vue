@@ -114,7 +114,7 @@ export default {
 </script>
 
 <style>
-.sofa-message {
+/* .sofa-message {
   position: absolute;
   left: 50%;
   top: 10%;
@@ -125,6 +125,128 @@ export default {
   height: 60px;
   width: 460px;
   border-radius: 20px;
+} */
+.sofa-message__closeBtn:focus,
+.sofa-message__content:focus {
+  outline-width: 0
 }
+
+.sofa-message {
+  min-width: 380px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ebeef5;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #edf2fc;
+  -webkit-transition: opacity .3s, -webkit-transform .4s;
+  transition: opacity .3s, -webkit-transform .4s;
+  transition: opacity .3s, transform .4s;
+  transition: opacity .3s, transform .4s, -webkit-transform .4s;
+  overflow: hidden;
+  padding: 15px 15px 15px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+
+.sofa-message.is-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+
+.sofa-message p {
+  margin: 0
+}
+
+.sofa-message--info .sofa-message__content {
+  color: #909399
+}
+
+.sofa-message--success {
+  background-color: #f0f9eb;
+  border-color: #e1f3d8
+}
+
+.sofa-message--success .sofa-message__content {
+  color: #67c23a
+}
+
+.sofa-message--warning {
+  background-color: #fdf6ec;
+  border-color: #faecd8
+}
+
+.sofa-message--warning .sofa-message__content {
+  color: #e6a23c
+}
+
+.sofa-message--error {
+  background-color: #fef0f0;
+  border-color: #fde2e2
+}
+
+.sofa-message--error .sofa-message__content {
+  color: #f56c6c
+}
+
+.sofa-message__icon {
+  margin-right: 10px
+}
+
+.sofa-message__content {
+  padding: 0;
+  font-size: 14px;
+  line-height: 1
+}
+
+.sofa-message__closeBtn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #c0c4cc;
+  font-size: 16px
+}
+
+.sofa-message__closeBtn:hover {
+  color: #909399
+}
+
+.sofa-message .sofa-icon-success {
+  color: #67c23a
+}
+
+.sofa-message .sofa-icon-error {
+  color: #f56c6c
+}
+
+.sofa-message .sofa-icon-info {
+  color: #909399
+}
+
+.sofa-message .sofa-icon-warning {
+  color: #e6a23c
+}
+
+.sofa-message-fade-enter,
+.sofa-message-fade-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%)
+}
+
 </style>
 
