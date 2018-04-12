@@ -4,6 +4,7 @@ import HelloWorld from '../components/HelloWorld';
 import ButtonPage from '../pages/Button';
 import IconPage from '../pages/Icon';
 import InputPage from '../pages/Input';
+import RadioPage from '../pages/Radio';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/input',
       name: 'Input',
       component: InputPage,
+    },
+    {
+      path: '/radio',
+      name: 'Radio',
+      component: RadioPage,
     },
   ],
 });
