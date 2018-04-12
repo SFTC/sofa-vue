@@ -7,8 +7,8 @@
         'is-disabled': inputDisabled,
       } 
     ]"
-    @mouseenter="hovering === true"
-    @mouseleave="hovering === false"
+    @mouseenter="hovering = true"
+    @mouseleave="hovering = false"
   >
     <input 
       :type="type"
@@ -23,6 +23,21 @@
       @blur="handleBlur"
       @change="handleChange"
     >
+    <span
+      class="sofa-input--suffix"
+      v-if="showClear"
+    >
+      <span class="sofa-input--suffix-inner">
+        <template v-if="!showClear">
+        </template>
+        <i
+          v-else
+          class="sofa-input--icon sofa-icon-close"
+          @click="handleClear"
+        >
+        </i>
+      </span>
+    </span>
   </div>
 </template>
 <script>
@@ -43,6 +58,10 @@
       value: [String, Number],
       size: String,
       disabled: Boolean,
+      clearable: {
+        type: Boolean,
+        default: false,
+      },
       placeholder: {
         type: String,
         default: '',
@@ -59,10 +78,13 @@
 
     computed: {
       inputSize() {
-        return this.size || ''
+        return this.size || '';
       },
       inputDisabled() {
-        return this.disabled || false
+        return this.disabled || false;
+      },
+      showClear() {
+        return this.clearable && !this.disabled && this.inputValue !== '' && (this.focused || this.hovering);
       },
     },
 
@@ -95,7 +117,7 @@
         const value = event.target.value;
         this.$emit('change', value);
       },
-      clear() {
+      handleClear() {
         this.$emit('input', '');
         this.$emit('change', '');
         this.$emit('clear');

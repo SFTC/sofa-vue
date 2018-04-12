@@ -30,6 +30,35 @@ describe('input', () => {
     expect(wrapper.find('.sofa-input input').attributes().disabled).toBe('disabled')
   })
 
+  it('should clearable', () => {
+    const TestComponent = {
+      template: `<sofa-input
+        placeholder="请输入内容"
+        clearable
+        value="123456"
+        @clear="clearHandler"
+      />`,
+      props: [
+        'clearHandler'
+      ]
+    };
+
+    const clearHandler = sinon.stub();
+    const wrapper = mount(TestComponent, {
+      propsData: {
+        clearHandler,
+      },
+      stubs: {
+        SofaInput
+      }
+    });
+    // focus to show clear button
+    wrapper.find('.sofa-input input').trigger('focus');
+    expect(wrapper.find('.sofa-input .sofa-icon-close').exists()).toBe(true)
+    wrapper.find('.sofa-input .sofa-icon-close').trigger('click')
+    expect(clearHandler.calledOnce).toBe(true)
+  })
+
   it('should trigger event handler', () => {
     const TestComponent = {
       template: `<sofa-input

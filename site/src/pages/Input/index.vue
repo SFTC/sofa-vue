@@ -4,10 +4,12 @@
       <sofa-input
         v-model="value"
         placeholder="请输入内容"
+        clearable
         @input="handlerInput"
         @blur="handleBlur"
         @focus="handlerFocus"
         @change="handleChange"
+        @clear="handleClear"
       >测试一下</sofa-input>
     </comp-show-container>
   </div>
@@ -45,6 +47,10 @@ export default {
       // eslint-disable-next-line
       console.log('change');
     },
+    handleClear() {
+      // eslint-disable-next-line
+      console.log('clear');
+    }
   },
 };
 </script>
