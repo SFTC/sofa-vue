@@ -16,7 +16,7 @@
       <slot>
         <p v-html="message" class="sofa-message__content"></p>
       </slot>
-      <i v-if="showClose" class="sofa-message__closeBtn el-icon-close" @click="close"></i>
+      <i v-if="showClose" class="sofa-message__closeBtn sofa-icon-close" @click="close"></i>
     </div>
   </transition>
 </template>
@@ -30,6 +30,7 @@ const typeMap = {
 };
 
 export default {
+  name: 'SofaMessage',
   data() {
     return {
       visible: false,

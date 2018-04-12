@@ -9,16 +9,16 @@ let nowzIndex = 2000;
 
 const Message = (options) => {
   if (Vue.prototype.$isServer) return;
-  this.options = options || {};
-  if (typeof this.options === 'string') {
-    this.options = {
+  options = options || {};
+  if (typeof options === 'string') {
+    options = {
       message: options,
     };
   }
   const userOnClose = options.onClose;
   const id = idIndex;
   idIndex += 1;
-  this.options.onClose = () => {
+  options.onClose = () => {
     Message.close(id, userOnClose);
   };
   messageInstance = new MessageConstructor({
@@ -37,11 +37,11 @@ const Message = (options) => {
 ['success', 'warning', 'info', 'error'].forEach((type) => {
   Message[type] = (options) => {
     if (typeof options === 'string') {
-      this.options = {
+      options = {
         message: options,
       };
     }
-    this.options.type = type;
+    options.type = type;
     return Message(options);
   };
 });

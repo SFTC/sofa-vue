@@ -38,3 +38,10 @@
   font-size: 14px;
   line-height: 1
 }
+
+.sofa-message-fade-enter,
+.sofa-message-fade-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%)
+}
