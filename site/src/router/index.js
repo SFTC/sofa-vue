@@ -4,6 +4,7 @@ import HelloWorld from '../components/HelloWorld';
 import ButtonPage from '../pages/Button';
 import IconPage from '../pages/Icon';
 import MessagePage from '../pages/Message';
+import InputPage from '../pages/Input';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/message',
       name: 'Message',
       component: MessagePage,
+    },
+    {
+      path: '/input',
+      name: 'Input',
+      component: InputPage,
     },
   ],
 });
