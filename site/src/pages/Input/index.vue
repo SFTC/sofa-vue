@@ -4,6 +4,7 @@
       <sofa-input
         v-model="value"
         placeholder="请输入内容"
+        size="large"
         clearable
         @input="handlerInput"
         @blur="handleBlur"
@@ -50,7 +51,7 @@ export default {
     handleClear() {
       // eslint-disable-next-line
       console.log('clear');
-    }
+    },
   },
 };
 </script>
