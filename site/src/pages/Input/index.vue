@@ -50,7 +50,7 @@ export default {
     handleClear() {
       // eslint-disable-next-line
       console.log('clear');
-    }
+    },
   },
 };
 </script>
