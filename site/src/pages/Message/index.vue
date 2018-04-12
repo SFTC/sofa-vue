@@ -1,7 +1,19 @@
 <template>
   <div>
+    _(•̀ω•́ 」∠)_ Message 消息提示
     <comp-show-container>
-      <sofa-button size="small" @click="handleOpenMessgae">打开消息提示</sofa-button>
+      <sofa-button size="small" type="danger" @click="handleOpenMessgae('info', '我是消息')">
+        打开消息提示
+      </sofa-button>
+      <sofa-button size="small" type="danger" @click="handleOpenMessgae('success', '我是成功的信息')">
+        打开成功消息提示
+      </sofa-button>
+      <sofa-button size="small" type="danger" @click="handleOpenMessgae('warning', '我是警告的信息')">
+        打开警告消息提示
+      </sofa-button>
+      <sofa-button size="small" type="danger" @click="handleOpenMessgae('error', '我是失败的信息')">
+        打开错误消息提示
+      </sofa-button>
     </comp-show-container>
   </div>
 </template>
@@ -19,12 +31,19 @@ export default {
     CompShowContainer,
   },
   methods: {
-    handleOpenMessgae() {
+    handleOpenMessgae(infoType, messageText) {
       this.$message({
-        message: '恭喜你，这是一条成功消息',
-        type: 'success',
+        message: messageText,
+        type: infoType,
       });
     },
   },
 };
 </script>
+
+<style>
+  .sofa-button {
+    margin-bottom: 10px;
+  }
+</style>
+
