@@ -1,8 +1,7 @@
 <template>
   <div>
-    _(•̀ω•́ 」∠)_ Message 消息提示
     <comp-show-container>
-      <sofa-button size="small" type="danger" @click="handleOpenMessgae('info', '我是消息')">
+      <sofa-button size="small" type="danger" @click="handleOpenMessgae('info', '我是普通的消息')">
         打开消息提示
       </sofa-button>
       <sofa-button size="small" type="danger" @click="handleOpenMessgae('success', '我是成功的信息')">
