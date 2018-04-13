@@ -9,7 +9,7 @@
       v-show="visible"
       @mouseenter="clearTimer"
       @mouseleave="startTimer"
-      role="alert"
+      @keydown="keydownHandler"
     >
       <i :class="iconClass" v-if="iconClass"></i>
       <i :class="typeClass" v-else></i>
@@ -48,14 +48,6 @@ export default {
   },
 
   computed: {
-    iconWrapClass() {
-      const classes = ['sofa-message__icon'];
-      if (this.type && !this.iconClass) {
-        classes.push(`sofa-message__icon--${ this.type }`);
-      }
-      return classes;
-    },
-
     typeClass() {
       return this.type && !this.iconClass
         ? `sofa-message__icon sofa-icon-${ typeMap[this.type] }`
@@ -67,8 +59,8 @@ export default {
     closed(newVal) {
       if (newVal) {
         this.visible = false;
-        this.destroyElement();
         this.$el.addEventListener('transitionend', this.destroyElement);
+        this.destroyElement();
       }
     }
   },
@@ -85,10 +77,12 @@ export default {
         this.onClose(this);
       }
     },
-    clearTimer() {
+    clearTimer(e) {
+      this.$emit('mouseenter', e);
       clearTimeout(this.timer);
     },
-    startTimer() {
+    startTimer(e) {
+      this.$emit('mouseleave', e);
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
           if (!this.closed) {
@@ -97,7 +91,8 @@ export default {
         }, this.duration);
       }
     },
-    keydown(e) {
+    keydownHandler(e) {
+      this.$emit('keydown', e);
       if (e.keyCode === 27) {
         if (!this.closed) {
           this.close();
@@ -107,10 +102,10 @@ export default {
   },
   mounted() {
     this.startTimer();
-    document.addEventListener('keydown', this.keydown);
+    document.addEventListener('keydown', this.keydownHandler);
   },
   beforeDestroy() {
-    document.removeEventListener('keydown', this.keydown);
+    document.removeEventListener('keydown', this.keydownHandler);
   }
 };
 </script>

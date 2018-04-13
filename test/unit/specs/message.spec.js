@@ -10,6 +10,56 @@ describe('message', () => {
     expect(wrapper.find('.sofa-message'));
   });
 
+  it('mouseenter a messgae', () => {
+    const TestComponent = {
+      template: `<sofa-message-components @mouseenter="mouseenterHandler"/>`,
+      props: ['mouseenterHandler']
+    };
+    const mouseenterHandler = sinon.stub();
+    const wrapper = mount(TestComponent, {
+      propsData: { mouseenterHandler },
+      stubs: {
+        SofaMessageComponents
+      }
+    });
+    wrapper.find(SofaMessageComponents).trigger('mouseenter');
+    expect(mouseenterHandler.called).toBe(true);
+  });
+
+  it('mouseleave a messgae', () => {
+    const TestComponent = {
+      template: `<sofa-message-components @mouseleave="mouseleaveHandler"/>`,
+      props: ['mouseleaveHandler']
+    };
+    const mouseleaveHandler = sinon.stub();
+    const wrapper = mount(TestComponent, {
+      propsData: { mouseleaveHandler },
+      stubs: {
+        SofaMessageComponents
+      }
+    });
+    wrapper.find(SofaMessageComponents).trigger('mouseleave');
+    expect(mouseleaveHandler.called).toBe(true);
+  });
+
+  it('keydown a messgae', () => {
+    const TestComponent = {
+      template: `<sofa-message-components @keydown="keydownHandler"/>`,
+      props: ['keydownHandler']
+    };
+    const keydownHandler = sinon.stub();
+    const wrapper = mount(TestComponent, {
+      propsData: { keydownHandler },
+      stubs: {
+        SofaMessageComponents
+      }
+    });
+    wrapper.find(SofaMessageComponents).trigger('keydown', {
+      keyCode: 27
+    });
+    expect(keydownHandler.called).toBe(true);
+  });
+
   it('user close all message', () => {
     const closeHandler1 = sinon.stub();
     const closeHandler2 = sinon.stub();
