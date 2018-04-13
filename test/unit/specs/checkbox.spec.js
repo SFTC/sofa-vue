@@ -92,6 +92,24 @@ describe('checkbox', () => {
     wrapper.find('.sofa-checkbox input').trigger('click');
     expect(wrapper.props().checked).toBe('a');
   });
+  it('true false label', () => {
+    const TestComponent = {
+      template: `<sofa-checkbox trueLabel='a' falseLabel="b" @change="clickHandler"></sofa-checkbox>`,
+      props: ['clickHandler']
+    };
+    const clickHandler = sinon.stub();
+    const wrapper = mount(TestComponent, {
+      propsData: {
+        clickHandler,
+        checked: 'b'
+      },
+      stubs: {
+        SofaCheckbox
+      }
+    });
+    wrapper.find('.sofa-checkbox input').trigger('click');
+    expect(wrapper.props().checked).toBe('b');
+  });
   it('indeterminate', () => {
     const wrapper = mount(SofaCheckbox, {
       propsData: {
