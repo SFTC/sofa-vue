@@ -89,7 +89,6 @@ describe('checkbox', () => {
         SofaCheckbox
       }
     });
-    // wrapper.setData({ checked: 'a' });
     wrapper.find('.sofa-checkbox input').trigger('click');
     expect(wrapper.props().checked).toBe('a');
   });
@@ -102,7 +101,7 @@ describe('checkbox', () => {
     // console.log(wrapper.props().indeterminate);
     expect(wrapper.props().indeterminate).toBe(true);
   });
-  it('addToStore', () => {
+  it('checked', () => {
     const wrapper = mount(SofaCheckbox, {
       propsData: {
         checked: true,

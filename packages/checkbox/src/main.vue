@@ -98,16 +98,6 @@ export default {
   },
 
   methods: {
-    addToStore() {
-      if (
-        Array.isArray(this.model) &&
-        this.model.indexOf(this.label) === -1
-      ) {
-        this.model.push(this.label);
-      } else {
-        this.model = this.trueLabel || true;
-      }
-    },
     handleChange(ev) {
       let value;
       if (ev.target.checked) {
@@ -121,9 +111,8 @@ export default {
 
   created() {
     if (this.checked) {
-      this.addToStore();
+      this.model = this.trueLabel || true;
     }
-    // this.checked && this.addToStore();
   },
 
   mounted() {
