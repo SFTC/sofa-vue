@@ -1,4 +1,7 @@
-import { shallow, mount } from '@vue/test-utils';
+import {
+  shallow,
+  mount
+} from '@vue/test-utils';
 import SofaMessage from '@/message/index.js';
 import SofaMessageComponents from '@/message/src/main.vue';
 import sinon from 'sinon'
@@ -9,6 +12,18 @@ describe('message', () => {
     const wrapper = mount(SofaMessageComponents);
     expect(wrapper.find('.sofa-message'));
   });
+
+  it('should center', () => {
+    const wrapper = mount(SofaMessageComponents, {
+      propsData: {
+        center: true,
+      },
+      stubs: {
+        SofaMessageComponents
+      }
+    })
+    expect(wrapper.props().center).toBe(true);
+  })
 
   it('mouseenter a messgae', () => {
     const TestComponent = {
@@ -33,7 +48,9 @@ describe('message', () => {
     };
     const mouseleaveHandler = sinon.stub();
     const wrapper = mount(TestComponent, {
-      propsData: { mouseleaveHandler },
+      propsData: { 
+        mouseleaveHandler,
+       },
       stubs: {
         SofaMessageComponents
       }
@@ -49,7 +66,9 @@ describe('message', () => {
     };
     const keydownHandler = sinon.stub();
     const wrapper = mount(TestComponent, {
-      propsData: { keydownHandler },
+        propsData: { 
+          keydownHandler,
+         },
       stubs: {
         SofaMessageComponents
       }
@@ -63,7 +82,7 @@ describe('message', () => {
   it('user close all message', () => {
     const closeHandler1 = sinon.stub();
     const closeHandler2 = sinon.stub();
-    
+    SofaMessage('我是一个测试用例哈哈哈');
     SofaMessage({
       message: '我是一个测试用例哈哈哈',
       duration: 0,
@@ -86,5 +105,5 @@ describe('message', () => {
   it('user close all message', () => {
     SofaMessage();
   });
-  
+
 });
