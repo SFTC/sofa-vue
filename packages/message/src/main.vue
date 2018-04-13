@@ -69,7 +69,9 @@ export default {
     destroyElement() {
       this.$el.removeEventListener('transitionend', this.destroyElement);
       this.$destroy(true);
-      this.$el.parentNode.removeChild(this.$el);
+      if (this.$el.parentNode) {
+        this.$el.parentNode.removeChild(this.$el);
+      }
     },
     close() {
       this.closed = true;
