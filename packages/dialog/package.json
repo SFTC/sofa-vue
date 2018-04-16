@@ -1,6 +1,6 @@
 {
-  "name": "@sftc/sofa-input",
+  "name": "@sftc/sofa-dialog",
   "version": "1.0.0",
-  "description": "SofaInput",
-  "author": "maoyuyang &lt;yuyangmao@sf-express.com&gt;"
+  "description": "SofaDialog",
+  "author": "zhangnig"
 }

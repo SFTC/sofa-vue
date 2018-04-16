@@ -56,6 +56,14 @@
     background-color: rgba(0,0,0,0.6);
     text-align: center;
   }
+/*  @keyframes showModal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }*/
   .modal {
     width: 50%;
     height: 50%;

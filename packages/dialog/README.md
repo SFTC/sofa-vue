@@ -1,1 +1,1 @@
-# sofa-input
+# sofa-dialog
