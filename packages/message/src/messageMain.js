@@ -8,7 +8,6 @@ let idIndex = 1;
 let nowzIndex = 2000;
 
 const Message = (options) => {
-  if (Vue.prototype.$isServer) return;
   options = options || {};
   if (typeof options === 'string') {
     options = {

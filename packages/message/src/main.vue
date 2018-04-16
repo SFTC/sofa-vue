@@ -87,15 +87,13 @@ export default {
       this.$emit('mouseleave', e);
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
-          this.close();
+        this.close();
         }, this.duration);
       }
     },
     keydownHandler(e) {
       this.$emit('keydown', e);
-      if (e.keyCode === 27) {
-        this.close();
-      }
+      this.close();
     }
   },
   mounted() {
