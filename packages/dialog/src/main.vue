@@ -1,44 +1,4 @@
 <template>
-  <!-- <div 
-    :class="[
-      type === 'textarea' ? 'sofa-textarea' : 'sofa-input',
-      inputSize ? `sofa-input--${inputSize}` : '',
-      {
-        'is-disabled': inputDisabled,
-      } 
-    ]"
-    @mouseenter="hovering = true"
-    @mouseleave="hovering = false"
-  >
-    <input 
-      :type="type"
-      v-if="type != 'textarea'"
-      :placeholder="placeholder"
-      :disabled="inputDisabled"
-      :value="inputValue"
-      :autocomplete="autoComplete"
-      ref="input"
-      @input="handleInput"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @change="handleChange"
-    >
-    <span
-      class="sofa-input--suffix"
-      v-if="showClear"
-    >
-      <span class="sofa-input--suffix-inner">
-        <template v-if="!showClear">
-        </template>
-        <i
-          v-else
-          class="sofa-input--icon sofa-icon-close"
-          @click="handleClear"
-        >
-        </i>
-      </span>
-    </span>
-  </div> -->
   <div v-if="visible" class="container" @click="closeModal">
     <div class="modal" @click="preventDefault">
       <div class="title">{{title}}</div><span @click="closeModal" class="close_button">x</span>
@@ -55,91 +15,28 @@
 
     data() {
       return {
-        // inputValue: this.value || '',
-        // hovering: false,
-        // focused: false,
       }
     },
 
     props: {
-      // value: [String, Number],
-      // size: String,
-      // disabled: Boolean,
-      // clearable: {
-      //   type: Boolean,
-      //   default: false,
-      // },
-      // placeholder: {
-      //   type: String,
-      //   default: '',
-      // },
-      // type: {
-      //   type: String,
-      //   default: 'text',
-      // },
-      // autoComplete: {
-      //   type: String,
-      //   default: 'off',
-      // },
-      title: [String],
-      visible: Boolean,
+      title: {
+        type: String,
+        default: '',
+      },
+      visible: {
+        type: Boolean,
+        default: false,
+      },
     },
 
     computed: {
-      // inputSize() {
-      //   return this.size || '';
-      // },
-      // inputDisabled() {
-      //   return this.disabled || false;
-      // },
-      // showClear() {
-      //   return this.clearable && !this.disabled && this.inputValue !== '' && (this.focused || this.hovering);
-      // },
     },
 
     watch: {
-      // value(val, oldVal) {
-      //   this.setInputValue(val)
-      // }
-      // visible(val, oldVal) {
-      //   if (val === false) {
-      //     this.closeModal();
-      //   }
-      // }
     },
 
     methods: {
-      // focus() {
-      //   this.$refs.input.focus();
-      // },
-      // setInputValue(val) {
-      //   this.inputValue = val;
-      // },
-      // handleInput(event) {
-      //   const value = event.target.value;
-      //   this.$emit('input', value);
-      // },
-      // handleFocus(event) {
-      //   this.focused = true;
-      //   this.$emit('focus', event);
-      // },
-      // handleBlur(event) {
-      //   this.focused = false;
-      //   this.$emit('blur', event);
-      // },
-      // handleChange(event) {
-      //   const value = event.target.value;
-      //   this.$emit('change', value);
-      // },
-      // handleClear() {
-      //   this.$emit('input', '');
-      //   this.$emit('change', '');
-      //   this.$emit('clear');
-      //   this.setInputValue('')
-      //   this.focus();
-      // },
       closeModal($event) {
-        console.log(2222);
         this.$emit('before-close');
       },
       preventDefault(e) {

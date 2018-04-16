@@ -32,7 +32,6 @@ export default {
   methods: {
     handleClick() {
       this.visible = true;
-      console.log(1111);
     },
     handleClose() {
       this.visible = false;
