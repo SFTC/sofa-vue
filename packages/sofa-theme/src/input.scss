@@ -3,3 +3,85 @@
 @import "common/detail";
 @import "common/name";
 @import "common/mixin";
+
+/* Input style
+ -------------------------- */
+@include b(input) {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: $--input-font-size;
+
+  @include e(inner) {
+    -webkit-appearance: none;
+    background-color: $--input-fill;
+    background-image: none;
+    border-radius: $--input-border-radius;
+    border: $--input-border;
+    box-sizing: border-box;
+    color: $--input-color;
+    display: inline-block;
+    font-size: inherit;
+    height: $--input-height;
+    line-height: $--input-height;
+    outline: none;
+    padding: 0 7px;
+    transition: $--transition-base;
+    width: 100%;
+
+    &::placeholder {
+      color: $--input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: $--input-hover-border;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $--input-hover-border;
+      box-shadow: $--border-box-shadow;
+    }
+  }
+
+  @include e(suffix) {
+    position: absolute;
+    line-height: $--input-height;
+    cursor: pointer;
+    top: 0;
+    right: 8px;
+  }
+
+  @include m(large) {
+    @include e(inner) {
+      height: $--input-large-height;
+      line-height: $--input-large-height;
+    }
+    @include e(suffix) {
+      line-height: $--input-large-height;
+    }
+  }
+
+  @include m(small) {
+    @include e(inner) {
+      height: $--input-small-height;
+      line-height: $--input-small-height;
+    }
+    @include e(suffix) {
+      line-height: $--input-small-height;
+    }
+  }
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: $--transition-base;
+}
+
+.fade-enter-to, .fade-leave {
+  opacity: 1;
+}

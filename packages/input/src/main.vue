@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     :class="[
       type === 'textarea' ? 'sofa-textarea' : 'sofa-input',
       inputSize ? `sofa-input--${inputSize}` : '',
@@ -11,6 +11,7 @@
     @mouseleave="hovering = false"
   >
     <input 
+      class="sofa-input__inner"
       :type="type"
       v-if="type != 'textarea'"
       :placeholder="placeholder"
@@ -23,21 +24,23 @@
       @blur="handleBlur"
       @change="handleChange"
     >
+  <transition name="fade">
     <span
-      class="sofa-input--suffix"
+      class="sofa-input__suffix"
       v-if="showClear"
     >
-      <span class="sofa-input--suffix-inner">
+      <span class="sofa-input__suffix-inner">
         <template v-if="!showClear">
         </template>
-        <i
-          v-else
-          class="sofa-input--icon sofa-icon-close"
-          @click="handleClear"
-        >
+          <i
+            v-else
+            class="sofa-icon-close"
+            @click="handleClear"
+          ></i>
         </i>
       </span>
     </span>
+  </transition>
   </div>
 </template>
 <script>

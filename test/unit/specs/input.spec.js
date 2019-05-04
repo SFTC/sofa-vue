@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils';
+import { shallow, mount, TransitionStub } from '@vue/test-utils';
 import SofaInput from '@/input/index.js';
 import sinon from 'sinon'
 
@@ -7,6 +7,7 @@ describe('input', () => {
     const TestComponent = {
       template: `<sofa-input
         value='123456'
+        size='large'
         placeholder='请输入内容'
       />`
     };
@@ -19,6 +20,7 @@ describe('input', () => {
 
     expect(wrapper.find('.sofa-input input').element.value).toBe('123456')
     expect(wrapper.find('.sofa-input input').attributes().placeholder).toBe('请输入内容');
+    expect(wrapper.find('.sofa-input').classes()).toContain('sofa-input--large');
   });
 
   it('should disabled', () => {
@@ -31,32 +33,27 @@ describe('input', () => {
   })
 
   it('should clearable', () => {
-    const TestComponent = {
-      template: `<sofa-input
-        placeholder="请输入内容"
-        clearable
-        value="123456"
-        @clear="clearHandler"
-      />`,
-      props: [
-        'clearHandler'
-      ]
-    };
-
+    // sofaInput内部用到了transition过渡组件，用原来的TestComponent会报错
+    // 查阅issue后，更改为如下方式测试
     const clearHandler = sinon.stub();
-    const wrapper = mount(TestComponent, {
+    const wrapper = mount(SofaInput, {
       propsData: {
-        clearHandler,
+        value: '123456',
+        clearable: true,
+        placeholder: '请输入内容',
       },
       stubs: {
-        SofaInput
-      }
+        SofaInput,
+        transition: TransitionStub,
+      },
     });
+    // listen 'clear' event
+    wrapper.vm.$on('clear', clearHandler);
     // focus to show clear button
     wrapper.find('.sofa-input input').trigger('focus');
-    expect(wrapper.find('.sofa-input .sofa-icon-close').exists()).toBe(true)
-    wrapper.find('.sofa-input .sofa-icon-close').trigger('click')
-    expect(clearHandler.calledOnce).toBe(true)
+    expect(wrapper.find('.sofa-input .sofa-icon-close').exists()).toBe(true);
+    wrapper.find('.sofa-input .sofa-icon-close').trigger('click');
+    expect(clearHandler.calledOnce).toBe(true);
   })
 
   it('should trigger event handler', () => {

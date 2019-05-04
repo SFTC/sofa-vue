@@ -22,17 +22,40 @@ $--default-fill: $--color-white;
 $--default-text-color: $--color-black;
 $--default-box-sizing: border-box;
 
+$--color-text-primary: #303133 !default;
+$--color-text-regular: #606266 !default;
+$--color-text-secondary: #909399 !default;
+$--color-text-placeholder: #c0c4cc !default;
+
 /* Font
 -------------------------- */
 $--font-path: 'fonts' !default;
 $--font-size-primary: 12px !default;
 $--font-weight-primary: 500 !default;
+$--font-color-disabled-base: $--color-black !default;
+
 
 
 /* Border
 -------------------------- */
 $--border-width-base: 1px !default;
 $--border-style-base: solid !default;
-$--border-color-base: $--color-secondary !default;
+$--border-color-base: #dcdfe6 !default;
+$--border-color-light: #e4e7ed !default;
+$--border-color-lighter: #ebeef5 !default;
+$--border-color-extra-light: #f2f6fc !default;
+$--border-color-hover: #49a9ee !default;
 $--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
 $--border-radius-base: 4px !default;
+$--border-box-shadow: 0 0 0 2px rgba(16,142,233,.2) !default;
+
+/* Background
+-------------------------- */
+$--background-color-base: #f5f7fa !default;
+
+
+/* Disabled
+-------------------------- */
+$--disabled-fill-base: $--background-color-base !default;
+$--disabled-color-base: $--color-text-placeholder !default;
+$--disabled-border-base: $--border-color-light !default;
